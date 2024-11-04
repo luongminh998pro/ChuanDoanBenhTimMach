@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-import pandas as pd
 
 app = Flask(__name__)
 
@@ -31,71 +30,32 @@ data_khong_mac_benh = {
     'gluc': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],       # Glucose bình thường
     'smoke': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],      # Không hút thuốc
     'alco': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],       # Không uống rượu
-    'active': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],     # Tất cả đều hoạt động thể chất
+    'active': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],     # Hoạt động thể chất cao
     'cardio': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]      # 0: Không mắc bệnh
 }
 
-# Chuyển đổi dữ liệu thành DataFrame
-df_mac_benh = pd.DataFrame(data_mac_benh)
-df_khong_mac_benh = pd.DataFrame(data_khong_mac_benh)
-
-def match_department(age, gender, height, weight, ap_hi, ap_lo, cholesterol, gluc, smoke, alco, active):
-    # Kiểm tra trong DataFrame người mắc bệnh
-    for index, row in df_mac_benh.iterrows():
-        if (row['age'] == age and
-            row['gender'] == gender and
-            row['height'] == height and
-            row['weight'] == weight and
-            row['ap_hi'] == ap_hi and
-            row['ap_lo'] == ap_lo and
-            row['cholesterol'] == cholesterol and
-            row['gluc'] == gluc and
-            row['smoke'] == smoke and
-            row['alco'] == alco and
-            row['active'] == active):
-            return "Mắc bệnh tim mạch"
-
-    # Kiểm tra trong DataFrame người không mắc bệnh
-    for index, row in df_khong_mac_benh.iterrows():
-        if (row['age'] == age and
-            row['gender'] == gender and
-            row['height'] == height and
-            row['weight'] == weight and
-            row['ap_hi'] == ap_hi and
-            row['ap_lo'] == ap_lo and
-            row['cholesterol'] == cholesterol and
-            row['gluc'] == gluc and
-            row['smoke'] == smoke and
-            row['alco'] == alco and
-            row['active'] == active):
-            return "Không mắc bệnh tim mạch"
-
-    return "Không mắc bệnh tim mạch"
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    prediction = ""
-    if request.method == 'POST':
-        try:
-            # Nhận dữ liệu từ form
-            age = int(request.form.get('age', 0))
-            gender = int(request.form.get('gender', '0'))  # Đảm bảo giá trị là số
-            height = float(request.form.get('height', 0))
-            weight = float(request.form.get('weight', 0))
-            ap_hi = int(request.form.get('ap_hi', 0))
-            ap_lo = int(request.form.get('ap_lo', 0))
-            cholesterol = int(request.form.get('cholesterol', 1))
-            gluc = int(request.form.get('gluc', 1))
-            smoke = int(request.form.get('smoke', '0'))
-            alco = int(request.form.get('alco', '0'))
-            active = int(request.form.get('active', '0'))
+    return render_template('index.html')
 
-            # Dự đoán bệnh tim mạch
-            prediction = match_department(age, gender, height, weight, ap_hi, ap_lo, cholesterol, gluc, smoke, alco, active)
-        except ValueError:
-            prediction = "Dữ liệu nhập không hợp lệ!"
-
-    return render_template('index.html', prediction=prediction)
+@app.route('/predict', methods=['POST'])
+def predict():
+    age = int(request.form['age'])
+    gender = int(request.form['gender'])
+    height = int(request.form['height'])
+    weight = int(request.form['weight'])
+    ap_hi = int(request.form['ap_hi'])
+    ap_lo = int(request.form['ap_lo'])
+    cholesterol = int(request.form['cholesterol'])
+    gluc = int(request.form['gluc'])
+    smoke = int(request.form['smoke'])
+    alco = int(request.form['alco'])
+    active = int(request.form['active'])
+    
+    # Giả lập kết quả dự đoán đơn giản
+    result = 'Có khả năng mắc bệnh tim mạch' if cholesterol == 3 or gluc == 3 or ap_hi >= 140 or ap_lo >= 90 else 'Không có khả năng mắc bệnh tim mạch'
+    
+    return render_template('result.html', result=result)
 
 @app.route('/dataset')
 def dataset():
