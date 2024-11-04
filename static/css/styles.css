@@ -1,0 +1,132 @@
+/* Định kiểu cho thanh menu */
+nav {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+/* Đảm bảo nội dung không bị che khuất */
+body {
+    padding-top: 60px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin: 30px auto;
+    max-width: 80%;
+}
+
+/* Đặt chiều rộng tối đa và căn giữa nội dung */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+}
+
+/* Kiểu cho bảng */
+.centered-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto; /* Căn giữa bảng */
+}
+
+.centered-table th, .centered-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.centered-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Các lớp khác */
+form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+label {
+    display: block;
+    margin: 12px 0;
+    font-size: 18px;
+}
+
+input[type="text"], input[type="submit"], input[type="reset"] {
+    width: calc(100% - 22px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    opacity: 0.85;
+}
+
+.radio-group {
+    margin-bottom: 12px;
+}
+
+/* Kết quả dự đoán */
+.prediction-result {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 600px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    width: 80%;
+}
+
+

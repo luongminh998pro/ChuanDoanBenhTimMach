@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset</title>
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Thêm liên kết đến file CSS -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dataset">PPPT&Data Set</a></li>
+            <li><a href="/LogisticRegression">LogisticRegression</a></li>
+            <li><a href="/about">About Author</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Dataset</h1>
+        <table border="1" class="centered-table">
+            <tr>
+                <th>ID</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>AP Hi</th>
+                <th>AP Lo</th>
+                <th>Cholesterol</th>
+                <th>Gluc</th>
+                <th>Smoke</th>
+                <th>Alco</th>
+                <th>Active</th>
+                <th>Cardio</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

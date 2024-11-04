@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Đoán Bệnh Tim</title>
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Thêm liên kết đến file CSS -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dataset">PPPT&Data Set</a></li>
+            <li><a href="/LogisticRegression">LogisticRegression</a></li>
+            <li><a href="/about">About Author</a></li>
+        </ul>
+    </nav>
+    
+    <h1>Dự Đoán Bệnh Tim</h1>
+    <form method="POST">
+        <label for="age">Tuổi:</label>
+        <input type="text" id="age" name="age" value="{{ request.form.age }}" required><br>
+
+        <label>Giới tính:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="0" {% if request.form.gender == '0' %}checked{% endif %} required> Nam</label>
+            <label><input type="radio" name="gender" value="1" {% if request.form.gender == '1' %}checked{% endif %} required> Nữ</label>
+        </div>
+
+        <label for="height">Chiều cao (cm):</label>
+        <input type="text" id="height" name="height" value="{{ request.form.height }}" required><br>
+
+        <label for="weight">Cân nặng (kg):</label>
+        <input type="text" id="weight" name="weight" value="{{ request.form.weight }}" required><br>
+
+        <label for="ap_hi">Huyết áp tâm thu:</label>
+        <input type="text" id="ap_hi" name="ap_hi" value="{{ request.form.ap_hi }}" required><br>
+
+        <label for="ap_lo">Huyết áp tâm trương:</label>
+        <input type="text" id="ap_lo" name="ap_lo" value="{{ request.form.ap_lo }}" required><br>
+
+        <label>Cholesterol:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="cholesterol" value="1" {% if request.form.cholesterol == '1' %}checked{% endif %} required> Bình thường</label>
+            <label><input type="radio" name="cholesterol" value="2" {% if request.form.cholesterol == '2' %}checked{% endif %} required> Cao</label>
+            <label><input type="radio" name="cholesterol" value="3" {% if request.form.cholesterol == '3' %}checked{% endif %} required> Rất cao</label>
+        </div>
+
+        <label>Glucose:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gluc" value="1" {% if request.form.gluc == '1' %}checked{% endif %} required> Bình thường</label>
+            <label><input type="radio" name="gluc" value="2" {% if request.form.gluc == '2' %}checked{% endif %} required> Cao</label>
+            <label><input type="radio" name="gluc" value="3" {% if request.form.gluc == '3' %}checked{% endif %} required> Rất cao</label>
+        </div>
+
+        <label>Hút thuốc:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="smoke" value="0" {% if request.form.smoke == '0' %}checked{% endif %} required> Không</label>
+            <label><input type="radio" name="smoke" value="1" {% if request.form.smoke == '1' %}checked{% endif %} required> Có</label>
+        </div>
+
+        <label>Uống rượu:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="alco" value="0" {% if request.form.alco == '0' %}checked{% endif %} required> Không</label>
+            <label><input type="radio" name="alco" value="1" {% if request.form.alco == '1' %}checked{% endif %} required> Có</label>
+        </div>
+
+        <label>Hoạt động thể chất:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="active" value="0" {% if request.form.active == '0' %}checked{% endif %} required> Không</label>
+            <label><input type="radio" name="active" value="1" {% if request.form.active == '1' %}checked{% endif %} required> Có</label>
+        </div>
+
+        <input type="submit" value="Dự Đoán">
+        <input type="reset" value="Reset" onclick="window.location.href='/'"> <!-- Reset và trở về trang chính -->
+    </form>
+
+    <div class="prediction-result">
+        {% if prediction %}
+            <h2>Kết quả dự đoán: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
