@@ -1,10 +1,11 @@
 body {
-    background-image: url('/static/image/anhnen03.jpg'); /* Đường dẫn tới thư mục images */
+    background-image: url('https://i.ibb.co/Yp1hFbL/anhnen03.jpg'); /* Đường dẫn tới ảnh trên IBB */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     padding-top: 60px;
 }
+
 
 /* Định kiểu cho thanh menu */
 nav {
