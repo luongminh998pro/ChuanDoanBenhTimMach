@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Dự Đoán</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Đường dẫn đến file CSS -->
+    <style>
+        /* Căn giữa và định dạng nút bấm */
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            margin-right: 29%; /* Điều chỉnh khoảng cách cách lề phải */
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .prediction-result {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('dataset') }}">PPPT&Data Set</a></li>
+            <li><a href="{{ url_for('xgboost') }}">LogisticRegression</a></li>
+            <li><a href="{{ url_for('about') }}">About Author</a></li>
+        </ul>
+    </nav>
+
+    <h1>Kết Quả Dự Đoán</h1>
+
+    <div class="prediction-result">
+        <p>{{ result }}</p> <!-- Hiển thị kết quả dự đoán -->
+    </div>
+
+    <!-- Nút bấm quay lại trang chính -->
+    <div class="btn-container">
+        <a href="{{ url_for('index') }}" class="btn">Quay lại trang chính</a>
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Logistic Regression</title>
-    <link rel="stylesheet" href="static/css/styles.css"> <!-- Thêm liên kết đến file CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Thêm liên kết đến file CSS -->
 </head>
 <body>
     <nav>
@@ -18,9 +18,9 @@
     <h1>Logistic Regression</h1>
     
     <div class="content">
-        <p>Logistic Regression là một thuật toán học máy được sử dụng chủ yếu cho các bài toán phân loại nhị phân, tức là bài toán trong đó biến mục tiêu có hai giá trị có thể có (thường là 0 hoặc 1, true hoặc false, có hoặc không). Mô hình logistic regression dự đoán xác suất p của một biến mục tiêu y bằng cách áp dụng hàm logistic lên tổ hợp tuyến tính của các biến đầu vào x:</p>
+        <p class="description">Logistic Regression là một thuật toán học máy được sử dụng chủ yếu cho các bài toán phân loại nhị phân, tức là bài toán trong đó biến mục tiêu có hai giá trị có thể có (thường là 0 hoặc 1, true hoặc false, có hoặc không). Mô hình logistic regression dự đoán xác suất <strong>p</strong> của một biến mục tiêu <strong>y</strong> bằng cách áp dụng hàm logistic lên tổ hợp tuyến tính của các biến đầu vào <strong>x</strong>:</p>
 
-        <p>p = σ(w.x + b)</p>
+        <p class="formula">p = σ(w.x + b)</p>
 
         <p>Trong đó:</p>
         <ul>

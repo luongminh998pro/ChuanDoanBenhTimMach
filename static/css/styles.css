@@ -1,3 +1,11 @@
+body {
+    background-image: url('/static/image/anhnen03.jpg'); /* Đường dẫn tới thư mục images */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 60px;
+}
+
 /* Định kiểu cho thanh menu */
 nav {
     background-color: #333;
@@ -51,6 +59,19 @@ h1 {
     margin: 0 auto;
     padding: 20px;
     text-align: justify;
+}
+
+/* Tăng cỡ chữ cho phần mô tả */
+.description {
+    font-size: 20px; /* Kích thước chữ lớn hơn */
+    line-height: 1.6; /* Khoảng cách dòng */
+}
+
+/* Tăng cỡ chữ cho công thức */
+.formula {
+    font-size: 24px; /* Kích thước chữ lớn hơn cho công thức */
+    font-weight: bold; /* In đậm công thức */
+    text-align: center; /* Căn giữa công thức */
 }
 
 /* Kiểu cho bảng */
@@ -128,5 +149,3 @@ input[type="submit"]:hover, input[type="reset"]:hover {
     font-size: 18px;
     width: 80%;
 }
-
-

@@ -18,7 +18,6 @@ data_mac_benh = {
     'cardio': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]      # 1: Mắc bệnh
 }
 
-
 data_khong_mac_benh = {
     'age': [50, 45, 30, 40, 35, 55, 65, 30, 25, 28, 34, 48, 52, 60, 53, 45, 33, 38, 29, 31, 41, 49, 55, 46, 43],
     'gender': [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1],  # 0: Nam, 1: Nữ
@@ -63,7 +62,7 @@ def dataset():
 
 @app.route('/LogisticRegression')
 def xgboost():
-    # Hiển thị giải thích thuật toán XGBoost
+    # Hiển thị giải thích thuật toán Logistic Regression
     return render_template('LogisticRegression.html')
 
 @app.route('/about')

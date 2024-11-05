@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dự Đoán Bệnh Tim</title>
-    <link rel="stylesheet" href="static/css/styles.css"> <!-- Thêm liên kết đến file CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Thêm liên kết đến file CSS -->
 </head>
 <body>
     <nav>
@@ -16,8 +16,9 @@
         </ul>
     </nav>
     
-    <h1>Dự Đoán Bệnh Tim</h1>
-    <form method="POST">
+
+    <form action="{{ url_for('predict') }}" method="POST"> <!-- Thêm action -->
+        <h1>Dự Đoán Bệnh Tim</h1>
         <label for="age">Tuổi:</label>
         <input type="text" id="age" name="age" value="{{ request.form.age }}" required><br>
 
@@ -75,10 +76,6 @@
         <input type="reset" value="Reset" onclick="window.location.href='/'"> <!-- Reset và trở về trang chính -->
     </form>
 
-    <div class="prediction-result">
-        {% if prediction %}
-            <h2>Kết quả dự đoán: {{ prediction }}</h2>
-        {% endif %}
-    </div>
+   
 </body>
 </html>
